@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Name:    MelissaDataNameObjectLinuxPython3
-# Purpose: Use the Melissa Updater to make the MelissaDataNameObjectLinuxPython3 sample usable
+# Name:    MelissaNameObjectLinuxPython3
+# Purpose: Use the Melissa Updater to make the MelissaNameObjectLinuxPython3 code usable
 
 ######################### Constants ##########################
 
@@ -48,7 +48,7 @@ ProductName="DQ_NAME_DATA"
 # Uses the location of the .sh file 
 # Modify this if you want to use 
 CurrentPath=$(pwd)
-ProjectPath="$CurrentPath/MelissaDataNameObjectLinuxPython3Sample"
+ProjectPath="$CurrentPath/MelissaNameObjectLinuxPython3"
 BuildPath="$ProjectPath"
 DataPath="$ProjectPath/Data"
 
@@ -123,7 +123,7 @@ CheckSOs()
 }
 
 ########################## Main ############################
-printf "\n================ Sample of Melissa Data Name Object ================\n                    [ Python3 | Linux | 64BIT ]\n"
+printf "\n======================== Melissa Name Object =======================\n                    [ Python3 | Linux | 64BIT ]\n"
 
 # Get license (either from parameters or user input)
 if [ -z "$license" ];
@@ -176,14 +176,11 @@ fi
 
 printf "\nAll file(s) have been downloaded/updated!\n"
 
-# Start sample
-# Build project
-printf "\n=========================== BUILD PROJECT ==========================\n"
-
+# Start
 # Run project
 if [ -z "$name" ];
 then
-    python3 $BuildPath/MelissaDataNameObjectLinuxPython3Sample.py --license $license  --dataPath $DataPath
+    python3 $BuildPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath
 else
-    python3 $BuildPath/MelissaDataNameObjectLinuxPython3Sample.py --license $license  --dataPath $DataPath --name "$name"
+    python3 $BuildPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath --name "$name"
 fi
