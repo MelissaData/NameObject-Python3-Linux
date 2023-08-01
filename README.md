@@ -1,7 +1,6 @@
 # Melissa - Name Object Linux Python3
 
 ## Purpose
-
 This code showcases the Melissa Name Object using Python3
 
 Please feel free to copy or embed this code to your own project. Happy coding!
@@ -24,10 +23,8 @@ And return
 - Result Codes
 
 ## Tested Environments
-
-- Linux 64-bit Python 3.8.7
-- Ubuntu 20.04.05 LTS
-- Melissa data files for 2023-06
+- Linux 64-bit Python 3.8.7, Ubuntu 20.04.05 LTS
+- Melissa data files for 2023-07
 
 ## Required File(s) and Programs
 
@@ -43,7 +40,6 @@ This is the c++ code of the Melissa Object.
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 This project is compatible with Python3
-
 
 #### Install Python3
 Before starting, make sure that Python3 has been correctly installed on your machine and your environment paths are configured. 
@@ -62,13 +58,11 @@ If you see the version number then you have installed Python3 and set up your en
 
 #### Download this project
 ```
-$ git clone https://github.com/MelissaData/NameObject-Python3-Linux.git
+$ git clone https://github.com/MelissaData/NameObject-Python3-Linux
 $ cd NameObject-Python3-Linux
 ```
 
 #### Set up Melissa Updater 
-
-
 Melissa Updater is a CLI application allowing the user to update their Melissa applications/data. 
 
 - In the root directory of the project, create a folder called `MelissaUpdater` by using the command: 
@@ -117,7 +111,6 @@ You may also need to alter permissions for the python files. To do this navigate
   `chmod +rx MelissaNameObjectLinuxPython3/mdName_pythoncode.py`
 
 ## Run Bash Script
-
 Parameters:
 - -n or --name: a test name
  	
@@ -152,13 +145,10 @@ This is the expected output from a successful setup for interactive mode:
 
 ![alt text](/screenshots/output.png)
 
-    
 ## Troubleshooting
-
 Troubleshooting for errors found while running your program.
 
 ### Errors:
-
 | Error      | Description |
 | ----------- | ----------- |
 | ErrorRequiredFileNotFound      | Program is missing a required file. Please check your Data folder and refer to the list of required files above. If you are unable to obtain all required files through the Melissa Updater, please contact technical support below. |
@@ -168,7 +158,6 @@ Troubleshooting for errors found while running your program.
 
 
 ## Contact Us
-
 For free technical support, please call us at 800-MELISSA ext. 4
 (800-635-4772 ext. 4) or email us at tech@melissa.com.
 
