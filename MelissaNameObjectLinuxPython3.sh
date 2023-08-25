@@ -42,7 +42,7 @@ while [ $# -gt 0 ] ; do
 done
 
 # ######################### Config ###########################
-RELEASE_VERSION='2023.07'
+RELEASE_VERSION='2023.08'
 ProductName="DQ_NAME_DATA"
 
 # Uses the location of the .sh file 
@@ -96,7 +96,7 @@ DownloadDataFiles()
 
 DownloadSO() 
 {
-    printf "\nMELISSA UPDATER IS DOWNLOADING SO(s)...\n"
+    printf "\nMELISSA UPDATER IS DOWNLOADING SO(S)...\n"
     
     # Check for quiet mode
     if [ $quiet == "true" ];
@@ -121,7 +121,7 @@ DownloadSO()
 
 DownloadWrapper() 
 {
-    printf "\nMELISSA UPDATER IS DOWNLOADING WRAPPER(s)...\n"
+    printf "\nMELISSA UPDATER IS DOWNLOADING WRAPPER(S)...\n"
     
     # Check for quiet mode
     if [ $quiet == "true" ];
