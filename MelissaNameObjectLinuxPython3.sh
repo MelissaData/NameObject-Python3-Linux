@@ -42,25 +42,19 @@ while [ $# -gt 0 ] ; do
 done
 
 # ######################### Config ###########################
-RELEASE_VERSION='2024.02'
+RELEASE_VERSION='2024.03'
 ProductName="DQ_NAME_DATA"
 
 # Uses the location of the .sh file 
-# Modify this if you want to use 
 CurrentPath=$(pwd)
 ProjectPath="$CurrentPath/MelissaNameObjectLinuxPython3"
-BuildPath="$ProjectPath"
-DataPath="$ProjectPath/Data"
 
-if [ ! -d $DataPath ];
+DataPath="$ProjectPath/Data" # To use your own data file(s), change to your DQS release data file(s) directory
+if [ ! -d "$DataPath" ] && [ "$DataPath" = "$ProjectPath/Data" ]; 
 then
-    mkdir $DataPath
+  mkdir -p "$DataPath"
 fi
 
-if [ ! -d $BuildPath ];
-then
-    mkdir $BuildPath
-fi
 
 # Config variables for download file(s)
 Config_FileName="libmdName.so"
@@ -101,14 +95,14 @@ DownloadSO()
     # Check for quiet mode
     if [ $quiet == "true" ];
     then
-        ./MelissaUpdater/MelissaUpdater file --filename $Config_FileName --release_version $Config_ReleaseVersion --license $1 --os $Config_OS --compiler $Config_Compiler --architecture $Config_Architecture --type $Config_Type --target_directory $BuildPath  &> /dev/null
+        ./MelissaUpdater/MelissaUpdater file --filename $Config_FileName --release_version $Config_ReleaseVersion --license $1 --os $Config_OS --compiler $Config_Compiler --architecture $Config_Architecture --type $Config_Type --target_directory $ProjectPath  &> /dev/null
         if [ $? -ne 0 ];
         then
             printf "\nCannot run Melissa Updater. Please check your license string!\n"
             exit 1
         fi
     else
-        ./MelissaUpdater/MelissaUpdater file --filename $Config_FileName --release_version $Config_ReleaseVersion --license $1 --os $Config_OS --compiler $Config_Compiler --architecture $Config_Architecture --type $Config_Type --target_directory $BuildPath 
+        ./MelissaUpdater/MelissaUpdater file --filename $Config_FileName --release_version $Config_ReleaseVersion --license $1 --os $Config_OS --compiler $Config_Compiler --architecture $Config_Architecture --type $Config_Type --target_directory $ProjectPath 
         if [ $? -ne 0 ];
         then
             printf "\nCannot run Melissa Updater. Please check your license string!\n"
@@ -146,7 +140,7 @@ DownloadWrapper()
 
 CheckSOs() 
 {
-    if [ ! -f $BuildPath/$Config_FileName ];
+    if [ ! -f $ProjectPath/$Config_FileName ];
     then
         echo "false"
     else
@@ -178,16 +172,7 @@ fi
 
 # Use Melissa Updater to download data file(s) 
 # Download data file(s) 
-DownloadDataFiles $license      # comment out this line if using DQS Release
-
-# Set data file(s) path
-#DataPath=""      # uncomment this line and change to your DQS Release data file(s) directory 
-
-#if [ ! -d $DataPath ]; # uncomment this section of code if you are using your own DQS Release data file(s) directory
-#then
-    #printf "\nData path is invalid!\n"
-    #exit 1
-#fi
+DownloadDataFiles $license # Comment out this line if using own DQS release
 
 # Download SO(s)
 DownloadSO $license 
@@ -216,8 +201,8 @@ printf "\nAll file(s) have been downloaded/updated!\n"
 if [ -z "$name" ];
 then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./MelissaNameObjectLinuxPython3
-    python3 $BuildPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath
+    python3 $ProjectPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath
 else
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./MelissaNameObjectLinuxPython3
-    python3 $BuildPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath --name "$name"
+    python3 $ProjectPath/MelissaNameObjectLinuxPython3.py --license $license  --dataPath $DataPath --name "$name"
 fi
